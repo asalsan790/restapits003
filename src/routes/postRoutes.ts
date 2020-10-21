@@ -11,14 +11,14 @@ class PostRoutes {
     get pRouter(){
         return this.router
     }
-    async getPosts(req: Request, res: Response){
+    private async getPosts(req: Request, res: Response): Promise<void>{
       // res.send('Posts')
        console.log('hola')
        const posts = await Posts.find()
         res.json(posts)
     }
 
-    async getPost(req: Request, res: Response){
+    private async getPost(req: Request, res: Response): Promise<void>{
         console.log(req.params.url)
         // findOne devuelve un solo documento
         // en lugar de un array de un documento
@@ -28,12 +28,12 @@ class PostRoutes {
         res.json(post)
     }
 
-    async createPost(req: Request, res: Response) {
+    private async createPost(req: Request, res: Response): Promise<void> {
         //res.send('Posts')
        console.log(req.body)
        // Recibimos los valores de cada campo
        // en varias variables
-       const {title, url, content, image } = req.body
+       const { title, url, content, image } = req.body
        //res.json('Recibido.')
        const newPost = new Posts({title, url, content, image})
        console.log(newPost)
@@ -42,18 +42,27 @@ class PostRoutes {
        res.json({data: newPost})
     }
 
-    async updatePost(req: Request, res: Response, ){
+    private async updatePost(req: Request, res: Response): Promise<void>{
         console.log(req.params.url)
+        const { url } = req.params
         console.log(req.body)
-        //await Posts.findOneAndUpdate()
-       res.json('received')
+        const post = await Posts.findOneAndUpdate( 
+            { url }, 
+            req.body,
+            {new: true}  // para que devuelva el objeto nuevo, actualizado
+            )
+        // recibo en la instrucción anterior el dato actualizado
+        // lo reenvío
+        res.json(post)
     }
 
-    deletePost(){
-
+    private async deletePost(req: Request, res: Response): Promise<void>{
+        const { url } = req.params
+        await Posts.findOneAndDelete({url})
+        res.json({ response: 'Post deleted successfully'})
     }
 
-    routes(){
+    routes(): void{
         // Atención el segundo parámetro es la función
         // representada por el nommbre
         /*
@@ -64,6 +73,7 @@ class PostRoutes {
         this.router.get('/', this.getPosts)
         this.router.get('/:url', this.getPost)
         this.router.post('/', this.createPost)
+        // En la actualización se puede usar put o post
         this.router.put('/:url', this.updatePost)
         this.router.delete('/:url', this.deletePost)
     }

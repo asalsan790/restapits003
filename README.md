@@ -57,3 +57,39 @@ git branch -M main
 git remote add origin https://github.com/***/**.git
 git push -u origin main
 ---
+
+Utilización con Postman:
+
+localhost:4500/api/posts
+Con método POST: 
+Para alta de un post. En body, raw, Json y esta estructura
+{ 
+    "title": "t1" , 
+    "url": "url1", 
+    "content": "content1", 
+    "image": "imagen1" 
+}
+
+localhost:4500/api/posts
+Con método GET para obtener un listado, array de posts
+
+localhost:4500/api/posts/url2
+Con método GET para obtener el post de url: url2
+
+localhost:4500/api/posts/url2
+Con método PUT:
+Para actualizar un post. En body, raw, Json esta estructura
+{ 
+    "title": "tx" , 
+    "url": "url2", 
+    "content": "contentx", 
+    "image": "imagenx" 
+}
+
+localhost:4500/api/posts/url2
+Con el método DELETE:
+Para eliminar el post de url: url2
+
+
+
+
