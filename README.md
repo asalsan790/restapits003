@@ -40,7 +40,20 @@ npm install @types/node @types/mongoose @types/express @types/cors @types/compre
 Instalamos postman:
 https://app.getpostman.com/app/download/win64
 
-tiempo 1:18:47
+tiempo 1:18:47:
 
 Recordar para ejecutar:
 npm run dev ( para que ejecute nodemon)
+
+---
+
+Recordamos los pasos git:
+
+
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/***/**.git
+git push -u origin main
+---
