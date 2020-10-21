@@ -1,5 +1,7 @@
 # Apliacación REST API con typescript y mongoDB
 
+Copn esto terminamos el CRUD de Posts
+
 El código comppleto en: https://github.com/FaztTech/rest-api-typescript
 
 
