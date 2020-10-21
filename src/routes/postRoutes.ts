@@ -6,32 +6,47 @@ class PostRoutes {
     constructor(){
         this.router = Router();
         this.routes()
-
     }
 
     get pRouter(){
         return this.router
     }
     async getPosts(req: Request, res: Response){
-       res.send('Posts')
+      // res.send('Posts')
        console.log('hola')
        const posts = await Posts.find()
-     //  res.json(posts)
+        res.json(posts)
     }
 
-    getPost(){
-
+    async getPost(req: Request, res: Response){
+        console.log(req.params.url)
+        // findOne devuelve un solo documento
+        // en lugar de un array de un documento
+        // que es lo que haría find
+        const post = await Posts.findOne({url: req.params.url})
+        //res.json('received')
+        res.json(post)
     }
 
-    createPost(req: Request, res: Response) {
+    async createPost(req: Request, res: Response) {
         //res.send('Posts')
        console.log(req.body)
+       // Recibimos los valores de cada campo
+       // en varias variables
+       const {title, url, content, image } = req.body
        //res.json('Recibido.')
-       res.json(req.body)
+       const newPost = new Posts({title, url, content, image})
+       console.log(newPost)
+       await newPost.save()
+       //res.json(req.body)
+       res.json({data: newPost})
     }
 
-    updatePost(){
-
+    async updatePost(req: Request, res: Response, ){
+        console.log(req.params.url)
+        console.log(req.body)
+        //await Posts.findOneAndUpdate()
+       res.json('received')
     }
 
     deletePost(){

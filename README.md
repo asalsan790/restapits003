@@ -40,7 +40,7 @@ npm install @types/node @types/mongoose @types/express @types/cors @types/compre
 Instalamos postman:
 https://app.getpostman.com/app/download/win64
 
-tiempo 1:00:00
+tiempo 1:18:47
 
 Recordar para ejecutar:
 npm run dev ( para que ejecute nodemon)
