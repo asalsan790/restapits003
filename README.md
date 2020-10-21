@@ -3,7 +3,7 @@
 El código comppleto en: https://github.com/FaztTech/rest-api-typescript
 
 
-Esta es la parte 002, anteriormente están restapits000 y restapits001
+Esta es la parte 003, anteriormente están restapits000, 001, 002
 
 Hay un documento en drive
 Herramientas y primeros pasos:
